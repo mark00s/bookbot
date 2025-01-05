@@ -32,9 +32,11 @@ def save_books(books=BOOKS):
 
     return file_paths
 
-def print_books(file_paths):
-    for file_path in file_paths:
-        with open(file_path["path"]) as f:
-            print(f.read())
+def get_book(file_path):
+        text = ""
+        # Explicitly close file by adding variable
+        with open(file_path) as f:
+            text = f.read()
+        return text
 
 main()
