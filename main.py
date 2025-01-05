@@ -43,4 +43,19 @@ def count_words(book_text):
      words = book_text.split()
      return len(words)
 
+def count_chars(book_text):
+    result = {}
+    book_text_lowered = book_text.lower()
+    for char in book_text_lowered:
+        if not char.isalpha():
+            continue
+
+        count = result.get(char, None)
+        if not count:
+            result[char] = 1
+        else:
+            result[char] = count + 1
+    
+    return dict(sorted(result.items(), key=lambda item: item[1], reverse=True))
+
 main()
