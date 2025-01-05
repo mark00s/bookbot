@@ -15,14 +15,18 @@ def main():
     return 0
 
 def save_books(books=BOOKS):
+    file_paths = []
+
     for book in books:
         for name, url in book.items():
             file_path = Path(f'{BOOKS_PATH}/{name}.txt')
-            if file_path.is_file():
-                continue
-            
-            book_text = requests.get(url).text
-            with open(file_path, "w") as f:
-                f.write(book_text)
 
+            if not file_path.is_file():
+                book_text = requests.get(url).text
+                with open(file_path, "w") as f:
+                    f.write(book_text)
+
+            file_paths.append({"name": name, "path": file_path})
+
+    return file_paths
 main()
