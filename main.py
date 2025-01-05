@@ -39,4 +39,8 @@ def get_book(file_path):
             text = f.read()
         return text
 
+def count_words(book_text):
+     words = book_text.split()
+     return len(words)
+
 main()
