@@ -5,8 +5,10 @@ BOOKS = [{"frankenstein": "https://raw.githubusercontent.com/asweigart/codebreak
 BOOKS_PATH = "books"
 
 def main():
+    file_paths = []
     try:
-        save_books()
+        file_paths = save_books()
+        print_books(file_paths)
     except Exception as e:
         print(e)
 
@@ -29,4 +31,10 @@ def save_books(books=BOOKS):
             file_paths.append({"name": name, "path": file_path})
 
     return file_paths
+
+def print_books(file_paths):
+    for file_path in file_paths:
+        with open(file_path["path"]) as f:
+            print(f.read())
+
 main()
